@@ -3,7 +3,7 @@
 #include <chrono>
 
 
-const int gene_n = 1000;
+const int gene_n = 3000;
 std::random_device rnd;
 std::mt19937 mt(rnd());
 std::uniform_int_distribution rand_n(0, gene_n - 1);
@@ -22,7 +22,7 @@ std::vector<Gene::Gene> next_gen(std::vector<Gene::Gene> &parents) {
         auto parent_a = parents[index_a], parent_b = parents[index_b];
 
         auto game = Gene::game(parent_a, parent_b);
-        children[i] = Gene::merge_gene(parent_a, parent_b, game.first, game.second);
+        children[i] = Gene::merge_gene_symmetry(parent_a, parent_b, game.first, game.second);
     }
 
     return children;
